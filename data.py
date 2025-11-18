@@ -1,7 +1,6 @@
 import requests
 import pprint
 import json
-
 import os
 import time
 
@@ -19,7 +18,7 @@ def update_data():
 
 
 def init_cards(images = False):
-    if time.time() - os.path.getmtime("default-cards.json") > 86400:
+    if not os.path.isfile("default-cards.json") or time.time() - os.path.getmtime("default-cards.json") > 86400:
         print("Updating default-cards.json")
         update_data()
 
